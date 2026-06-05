@@ -1,0 +1,36 @@
+{
+  "name": "contract-testing",
+  "version": "1.0.0",
+  "description": "Contract testing playground",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:consumer && npm run test:provider",
+    "test:consumer": "NODE_OPTIONS='--experimental-vm-modules' jest consumer/tests/consumer.test.ts",
+    "test:provider": "NODE_OPTIONS='--experimental-vm-modules' jest provider/tests/provider.test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SisterMorphine/contract-testing-playground.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SisterMorphine/contract-testing-playground/issues"
+  },
+  "homepage": "https://github.com/SisterMorphine/contract-testing-playground#readme",
+  "devDependencies": {
+    "@pact-foundation/pact": "^16.5.0",
+    "@types/express": "^4.17.24",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20.14.0",
+    "axios": "^1.17.0",
+    "express": "^5.2.1",
+    "jest": "^30.4.2",
+    "ts-jest": "^29.2.6",
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
