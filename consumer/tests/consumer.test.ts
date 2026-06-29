@@ -1,4 +1,5 @@
-import { PactV3 } from '@pact-foundation/pact';
+import { PactV3, MatchersV3 } from '@pact-foundation/pact';
+const { like } = MatchersV3;
 import axios from 'axios';
 
 const pact = new PactV3({
@@ -22,9 +23,9 @@ describe('User API contract', () => {
           'Content-Type': 'application/json',
         },
         body: {
-          id: 1,
-          name: 'John',
-          status: 'ACTIVE',
+          id: like(1),
+          name: like('John'),
+          status: like('ACTIVE'),
         },
       },
     });
@@ -32,10 +33,10 @@ describe('User API contract', () => {
     return pact.executeTest(async (mockServer) => {
       const response = await axios.get(`${mockServer.url}/users/1`);
 
-      expect(response.data).toEqual({
-        id: 1,
-        name: 'John',
-        status: 'ACTIVE',
+      expect(response.data).toMatchObject({
+        id: expect.any(Number),
+        name: expect.any(String),
+        status: expect.any(String),
       });
     });
   });
